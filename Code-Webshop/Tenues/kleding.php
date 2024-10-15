@@ -1,89 +1,131 @@
-<?php
-session_start();
-
-// Verwerk het formulier als het wordt ingediend
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Haal de gegevens uit het formulier
-    $product_id = $_POST['product_id'];
-    $size = $_POST['size'];
-    $name = $_POST['name'];
-    $number = $_POST['number'];
-
-    // Maak een array voor het product
-    $product = [
-        'id' => $product_id,
-        'size' => $size,
-        'name' => $name,
-        'number' => $number,
-        'quantity' => 1
-    ];
-
-    // Controleer of de winkelwagen al bestaat
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = [];
-    }
-
-    // Voeg het product toe aan de winkelwagen
-    $_SESSION['cart'][] = $product;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real Madrid Shop - Shirt Selectie</title>
-    <link rel="stylesheet" href="/Home-page/stylee.css"> <!-- Link naar je externe CSS bestand -->
+    <title>Real Madrid Shirt Configurator</title>
+    <link rel="stylesheet" href="stylee.css">
 </head>
 <body>
     <header>
-        <h1>Real Madrid Shop</h1>
+        <div class="logo">
+        <img src="../fotos/LogoRM.png" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="././Tenues/kleding.php">Tenues</a></li>
+                <li><a href="#">Accessoires</a></li>
+                <li><a href="#">Uitverkoop</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Zoeken...">
+        </div>
+        <div class="user-actions">
+            <a href="#">Inloggen</a>
+            <a href="/ProefExamen/Code-Webshop/Winkelwagen/winkelwagen.php">Winkelwagen</a>
+
+
+        </div>        
     </header>
 
-    <main>
-        <h2>Selecteer jouw shirt</h2>
-        
-        <div class="product-container">
-            <img src="shirt-image.jpg" alt="Real Madrid Shirt">
-            <form action="" method="POST">
-                <label for="size">Kies je maat:</label>
-                <select name="size" id="size" required>
-                    <option value="S">Small</option>
-                    <option value="M">Medium</option>
-                    <option value="L">Large</option>
-                    <option value="XL">Extra Large</option>
-                </select>
+    <?php
+    // Stel je voor dat deze gegevens uit een database komen
+    $product = [
+        'name' => 'Mens Home Authentic Shirt 24/25 White',
+        'price' => 190.00,
+        'sizes' => ['XS', 'S', 'M', 'L', 'XL'],
+        'badges' => [
+            'none' => 'None',
+            'cl' => 'Champions League +$25.00',
+            'laliga' => 'La Liga +$25.00'
+        ]
+    ];
+    ?>
 
-                <label for="name">Naam op de achterkant:</label>
-                <input type="text" name="name" id="name" maxlength="15" placeholder="Jouw naam" required>
-
-                <label for="number">Nummer:</label>
-                <input type="number" name="number" id="number" min="1" max="99" placeholder="0" required>
-
-                <input type="hidden" name="product_id" value="1">
-                <button type="submit">Toevoegen aan winkelwagen</button>
-            </form>
+    <div class="container">
+        <div class="product-image">
+        <img src="../fotos/RealShirt.png" alt="Real Madrid Home Shirt">
         </div>
-
-        <div class="cart">
-            <h2>Jouw winkelwagen</h2>
-            <?php if (!empty($_SESSION['cart'])): ?>
-                <ul>
-                    <?php foreach ($_SESSION['cart'] as $item): ?>
-                        <li>
-                            Shirt maat: <?= htmlspecialchars($item['size']) ?>, Naam: <?= htmlspecialchars($item['name']) ?>, Nummer: <?= htmlspecialchars($item['number']) ?>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php else: ?>
-                <p>Je winkelwagen is leeg.</p>
-            <?php endif; ?>
+        <div class="product-info">
+            <h1><?php echo $product['name']; ?></h1>
+            <p class="price">$<?php echo number_format($product['price'], 2); ?></p>
+            <div class="selectors">
+                <div class="size-selector">
+                    <label>Size:</label>
+                    <div class="sizes">
+                        <?php foreach ($product['sizes'] as $size): ?>
+                            <button class="size-btn"><?php echo $size; ?></button>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <div class="badge-selector">
+                    <label>Badge:</label>
+                    <select>
+                        <?php foreach ($product['badges'] as $badgeKey => $badgeValue): ?>
+                            <option value="<?php echo $badgeKey; ?>"><?php echo $badgeValue; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="name-number">
+                    <label>Name & Number:</label>
+                    <input type="text" placeholder="Type here...">
+                </div>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-    </main>
+    </div>
+
 
     <footer>
-        <p>&copy; 2024 Real Madrid Shop</p>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Winkel</h4>
+                <ul>
+                    
+                    <li><a href="#">Verzending & Retouren</a></li>
+                    <li><a href="#">Mijn bestelling volgen</a></li>
+                    <li><a href="#">Mijn account</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Over ons</h4>
+                <ul>
+                    <li><a href="#">Privacybeleid</a></li>
+                    <li><a href="#">Cookiebeleid</a></li>
+                    <li><a href="#">Algemene voorwaarden</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Hulp nodig?</h4>
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Veelgestelde vragen</a></li>
+                </ul>
+            </div>
+          
+        </div>
+        
+        </div>
+      
+       
+        <div class="footer-social">
+            <a href="#"><img src="../fotos/Facebook-Logo.jpg" alt="Facebook"></a>
+            <a href="#"><img src="../fotos/Insta-logo.png" alt="Instagram"></a>
+            <a href="#"><img src="../fotos/twitter-logo.png" alt="Twitter"></a>
+            <a href="#"><img src="../fotos/tiktok-logo.png" alt="TikTok"></a>
+            <a href="#"><img src="../fotos/youtube-logo.png" alt="YouTube"></a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Real Madrid CF Shop. Alle rechten voorbehouden.</p>
+        </div>
     </footer>
+                         
+
+
+
+
+
 </body>
 </html>
