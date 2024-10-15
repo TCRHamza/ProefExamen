@@ -12,8 +12,24 @@ session_start();
 </head>
 <body>
     <header>
-        <h1>Winkelwagen</h1>
+        <div class="logo">
+            <img src="../fotos/LogoRM.png" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="././Tenues/kleding.php">Tenues</a></li>
+                <li><a href="#">Uitverkoop</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Zoeken...">
+        </div>
+        <div class="user-actions">
+            <a href="#">Inloggen</a>
+            <a href="./Winkelwagen/winkelwagen.php">Winkelwagen</a>
+        </div>        
     </header>
+
 
     <main>
         <h2>Jouw geselecteerde shirts:</h2>
@@ -33,7 +49,48 @@ session_start();
     </main>
 
     <footer>
-        <p>&copy; 2024 Real Madrid Shop</p>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Winkel</h4>
+                <ul>
+                    
+                    <li><a href="#">Verzending & Retouren</a></li>
+                    <li><a href="#">Mijn bestelling volgen</a></li>
+                    <li><a href="#">Mijn account</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Over ons</h4>
+                <ul>
+                    <li><a href="#">Privacybeleid</a></li>
+                    <li><a href="#">Cookiebeleid</a></li>
+                    <li><a href="#">Algemene voorwaarden</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Hulp nodig?</h4>
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Veelgestelde vragen</a></li>
+                </ul>
+            </div>
+          
+        </div>
+        
+        </div>
+      
+       
+        <div class="footer-social">
+            <a href="#"><img src="../fotos/Facebook-Logo.jpg" alt="Facebook"></a>
+            <a href="#"><img src="../fotos/Insta-logo.png" alt="Instagram"></a>
+            <a href="#"><img src="../fotos/twitter-logo.png" alt="Twitter"></a>
+            <a href="#"><img src="../fotos/tiktok-logo.png" alt="TikTok"></a>
+            <a href="#"><img src="../fotos/youtube-logo.png" alt="YouTube"></a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Real Madrid CF Shop. Alle rechten voorbehouden.</p>
+        </div>
     </footer>
 </body>
 </html>
