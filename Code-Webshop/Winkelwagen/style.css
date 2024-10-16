@@ -1,9 +1,13 @@
-/* Basis stijlen */
-body, html {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: Arial, sans-serif;
-    background: #f5f5f5;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 header {
@@ -46,64 +50,56 @@ nav ul li a {
     color: #333;
 }
 
-/* Container voor productinformatie */
-.container {
+.hero {
     display: flex;
-    padding: 20px;
-    background: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ececec;
+    padding: 50px 20px;
 }
 
-.product-image img {
-    width: 300px;
-    height: auto;
+.hero-text {
+    flex: 1;
+    text-align: left;
 }
 
-.product-info {
-    padding: 0 20px;
-    flex-grow: 1;
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
 }
 
-h1 {
-    font-size: 24px;
-    color: #333;
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
 }
 
-.price {
-    font-size: 20px;
-    color: #666;
-}
-
-.selectors label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-.size-selector .sizes {
-    margin: 10px 0;
-}
-
-select, input[type="text"] {
-    padding: 5px;
-    width: 100%;
-    margin: 10px 0;
-    box-sizing: border-box;
-}
-
-.add-to-cart {
-    background-color: #007BFF;
-    color: white;
-    border: none;
+.shop-now {
     padding: 10px 20px;
-    cursor: pointer;
-    width: 100%;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
-.add-to-cart:hover {
-    background-color: #0056b3;
+.featured-items {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    justify-content: flex-end;
 }
 
-/* Footer stijlen */
+.featured-items .item {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.featured-items .item img {
+    width: 200px;
+    border-radius: 10px;
+}
+
 footer {
     background-color: #002244;
     color: white;
@@ -143,6 +139,44 @@ footer {
     text-decoration: underline;
 }
 
+.sign-up-btn {
+    display: inline-block;
+    background-color: #4e44ff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.footer-app {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.footer-app img {
+    margin: 10px;
+    height: 40px;
+}
+
+.footer-payments {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-payments img {
+    width: 250px;
+}
+
+.footer-social {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-social a {
+    margin: 0 10px;
+}
+
 .footer-social img {
     height: 30px;
 }
@@ -158,26 +192,3 @@ footer {
     margin: 0;
 }
 
-/* Maatselectieknoppen stijlen */
-.size-btn {
-    margin: 5px;
-    background-color: #fff;
-    border: 2px solid #ccc;
-    padding: 8px 16px;
-    border-radius: 50px; /* Geeft de knoppen een afgeronde vorm */
-    cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
-    font-weight: bold;
-    color: #333;
-}
-
-.size-btn:hover, .size-btn:focus {
-    border-color: #888;
-}
-
-.size-btn.selected {
-    border-color: #0044cc;
-    color: #0044cc;
-    box-shadow: 0 4px 8px rgba(0, 68, 204, 0.3); /* Voegt een subtiele schaduw toe rond de geselecteerde knop */
-}
